@@ -1,11 +1,13 @@
 version: '2'
 services:
   redis:
+    restart: always
     image: sameersbn/redis:latest
     volumes:
       - /srv/docker/gitlab/redis:/var/lib/redis
 
   postgresql:
+    restart: always
     image: sameersbn/postgresql:9.6-2
     volumes:
       - /srv/docker/gitlab/postgresql:/var/lib/postgresql
@@ -15,6 +17,7 @@ services:
       - DB_PASS=password
 
   gitlab:
+    restart: always
     image: sameersbn/gitlab:9.0.5
     volumes:
       - /srv/docker/gitlab/gitlab:/home/git/data
