@@ -18,6 +18,9 @@ services:
     image: sameersbn/gitlab:7.14.3
     volumes:
       - /srv/docker/gitlab/gitlab:/home/git/data
+    links:
+      - gitlab-postgresql:postgresql
+      - gitlab-redis:redisio
     ports:
       - "10022:22"
       - "10080:80"
