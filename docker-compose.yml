@@ -1,6 +1,6 @@
 version: '2'
 services:
-  db:
+  postgresql:
     image: sameersbn/postgresql:9.4-3
     volumes:
       - /srv/docker/gitlab/postgresql:/var/lib/postgresql
@@ -19,8 +19,8 @@ services:
     volumes:
       - /srv/docker/gitlab/gitlab:/home/git/data
     links:
-      - gitlab-postgresql:postgresql
-      - gitlab-redis:redisio
+      - postgresql:postgresql
+      - redis:redisio
     ports:
       - "10022:22"
       - "10080:80"
